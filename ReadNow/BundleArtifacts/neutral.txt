@@ -1,0 +1,3 @@
+MainPackage=C:\code\pocketnow\PocketNow\bin\Release\ReadNow_1.7.0.40_Bundle\ReadNow_1.7.0.40_AnyCPU.appx
+ResourcePack=C:\code\pocketnow\PocketNow\bin\Release\ReadNow_1.7.0.40_Bundle\ReadNow_1.7.0.40_scale-140.appx
+ResourcePack=C:\code\pocketnow\PocketNow\bin\Release\ReadNow_1.7.0.40_Bundle\ReadNow_1.7.0.40_scale-180.appx

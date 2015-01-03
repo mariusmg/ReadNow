@@ -1,0 +1,81 @@
+﻿<local:BasePage
+    x:Class="ReadNow.Views.ImageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReadNow.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Converters="using:ReadNow.Converters"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Converters:UrlDomainConverter x:Name="converterUrl" />
+        <Converters:UrlDisplayConverter x:Name="converterUrlDisplay" />
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image x:Name="imageButton" Source="../Assets/Logo.scale-180.png" Height="70" Margin="10,10,0,0" />
+            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Read Now" Style="{StaticResource PageHeaderTextStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <ProgressBar IsIndeterminate="True" Visibility="Collapsed" Grid.Row="0" x:Name="progressBar" x:FieldModifier="public" />
+
+            <StackPanel x:FieldModifier="public" x:Name="stackPanelNoItems" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Visibility="Collapsed">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Text="There's nothing here. Why not add some things ?" />
+            </StackPanel>
+
+            <ListView x:Name="listBoxItems" SelectionMode="Single" SelectionChanged="ListBoxItems_OnSelectionChanged" IsTapEnabled="True" Visibility="Visible" BorderThickness="0" x:FieldModifier="public" Grid.Row="1" Padding="40,20,40,20" Tapped="ListBoxItems_OnTapped">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image Source="{Binding GivenUrl}" Height="250" Width="250" Stretch="Uniform" />
+                            <TextBlock FontSize="15" Foreground="DeepSkyBlue" HorizontalAlignment="Center" Text="{Binding ResolvedUrl, Converter={StaticResource converterUrl}}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+
+    </Grid>
+
+    <Page.TopAppBar>
+        <AppBar Background="LightSkyBlue">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="buttonAppBarArticles" Style="{StaticResource BulletsAppBarButtonStyle }" Click="ButtonAppBarArticles_OnClick" />
+                <Button x:Name="buttonAppBarVideos" Style="{StaticResource VideoAppBarButtonStyle }" Click="ButtonAppBarVideos_OnClick" />
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
+    <Page.BottomAppBar>
+        <AppBar Background="LightSkyBlue">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="buttonAppBarRefresh" Style="{StaticResource RefreshAppBarButtonStyle }" Click="ButtonAppBarRefresh_OnClick" />
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <!--<Button x:Name="buttonAppBarFavorite" Style="{StaticResource FavoriteAppBarButtonStyle }" Click="ButtonFavorite_OnClick" />-->
+                    <Button x:Name="buttonAppBarDelete" Style="{StaticResource DeleteAppBarButtonStyle }" Click="ButtonAppBarDelete_OnClick" />
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+
+</local:BasePage>

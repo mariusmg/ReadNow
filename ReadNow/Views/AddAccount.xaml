@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="ReadNow.Views.AddAccount"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReadNow"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Width="438" Source="../Assets/bookmarklogo.png" HorizontalAlignment="Center" Margin="175,80,50,169" />
+        <Button x:FieldModifier="public" Grid.Column="1" Content="Add Account" Background="LightSkyBlue" FontSize="24" HorizontalAlignment="Center" Width="267" Height="116" x:Name="buttonLogin" Click="ButtonLogin_OnClick" Margin="211,302,185,350" />
+
+    </Grid>
+</Page>

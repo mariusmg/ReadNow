@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="57085MariusGheorghe.PocketNow" Publisher="CN=C821F838-3A76-4E75-9B00-AB018A3E0846" Version="1.7.0.40" />
+  <Properties>
+    <DisplayName>Read Now</DisplayName>
+    <PublisherDisplayName>Marius Gheorghe</PublisherDisplayName>
+    <Logo>Assets\Logo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="PocketNow.App">
+      <Extensions>
+        <Extension Category="windows.shareTarget">
+          <ShareTarget>
+            <DataFormat>URI</DataFormat>
+          </ShareTarget>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="pocketnow">
+            <Logo>bookmarklogo.png</Logo>
+            <DisplayName>PocketNow</DisplayName>
+          </Protocol>
+        </Extension>
+        <Extension Category="windows.search" />
+        <Extension Category="windows.backgroundTasks" EntryPoint="PocketNowBackgroundTasks.ItemDownloader">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+      <m2:VisualElements DisplayName="Read Now" Description="Read Now is a client for the Pocket service (formally Read It Later). It allows you to manage your articles and read them in a clean, simple way." BackgroundColor="#464646" ForegroundText="light" ToastCapable="false" Square150x150Logo="Assets\logo_100.png" Square30x30Logo="Assets\smalllogo_100.png">
+        <m2:DefaultTile ShortName="Read Now" Wide310x150Logo="Assets\widelogo_100.png">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+            <m2:ShowOn Tile="wide310x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="portrait" />
+          <m2:Rotation Preference="landscape" />
+          <m2:Rotation Preference="portraitFlipped" />
+          <m2:Rotation Preference="landscapeFlipped" />
+        </m2:InitialRotationPreference>
+        <m2:SplashScreen BackgroundColor="white" Image="Assets\splashscreen_100.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClientServer" />
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

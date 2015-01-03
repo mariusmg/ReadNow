@@ -1,0 +1,65 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReadNow.Common" xmlns:Converters="using:ReadNow.Converters">
+
+    <SolidColorBrush x:Key="ListViewItemSelectedBackgroundThemeBrush" Color="LightBlue"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ListViewItemPointerOverBackgroundThemeBrush" Color="DodgerBlue"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBackgroundThemeBrush" Color="LightBlue"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ListViewItemSelectedPointerOverBorderThemeBrush" Color="LightBlue"></SolidColorBrush>
+
+
+    <Converters:UrlDomainConverter x:Name="converterUrl" />
+    <Converters:UrlDisplayConverter x:Name="converterUrlDisplay" />
+
+    
+    <DataTemplate x:Key="articleTemplate">
+        <Grid>
+            <StackPanel>
+                <TextBlock FontSize="28" Text="{Binding Converter={StaticResource converterUrlDisplay}}"></TextBlock>
+                <TextBlock FontSize="15" Foreground="DeepSkyBlue" Text="{Binding ResolvedUrl, Converter={StaticResource converterUrl}}"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="articleTemplateSmall">
+        <Grid>
+            <StackPanel>
+                <TextBlock FontSize="20" TextWrapping="Wrap" Text="{Binding Converter={StaticResource converterUrlDisplay}}"></TextBlock>
+                <TextBlock FontSize="12" Foreground="DeepSkyBlue" Text="{Binding ResolvedUrl, Converter={StaticResource converterUrl}}"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="imageTemplate">
+        <ListView SelectionMode="Single">
+            <StackPanel>
+                <Image Source="{Binding ResolvedUrl}" Height="250" Width="250" Stretch="UniformToFill"></Image>
+                <TextBlock FontSize="15" HorizontalAlignment="Center" Text="{Binding ResolvedUrl, Converter={StaticResource converterUrl}}"></TextBlock>
+            </StackPanel>
+        </ListView>
+    </DataTemplate>
+
+
+
+    <DataTemplate x:Key="videosTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0" >
+                <TextBlock FontSize="28" TextWrapping="Wrap"  Text="{Binding Path=Item, Converter={StaticResource converterUrlDisplay}}"></TextBlock>
+                <TextBlock FontSize="15" Foreground="DeepSkyBlue" Text="{Binding Item.ResolvedUrl, Converter={StaticResource converterUrl}}"></TextBlock>
+            </StackPanel>
+
+            <Image HorizontalAlignment="Left" Grid.Row="1" Margin="0" Source="{Binding ImageUrl}" Height="100" Width="100" Stretch="Uniform" ></Image>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

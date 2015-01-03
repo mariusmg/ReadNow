@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="ReadNow.Views.SearchResults"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ReadNow.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,12,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="backButton" Click="BackButton_OnClick" Style="{StaticResource BackButtonStyle}" />
+            <TextBlock x:Name="textBoxSearchResults" Grid.Column="1" Text="Read Now" Style="{StaticResource PageHeaderTextStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            <Grid HorizontalAlignment="Center" x:Name="gridWithProgress" x:FieldModifier="public">
+                <ProgressRing></ProgressRing>
+            </Grid>
+
+            <Grid x:Name="gridContent" Visibility="Collapsed" x:FieldModifier="public">
+                <ListView CanReorderItems="False" SelectionMode="Single" x:Name="listViewResults" ItemTemplate="{StaticResource articleTemplate}" x:FieldModifier="public" Padding="40,20,40,20" SelectionChanged="ListViewResults_OnSelectionChanged" >
+                </ListView>
+            </Grid>
+
+            <Grid x:Name="gridNoResults" Visibility="Collapsed" x:FieldModifier="public" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Style="{StaticResource SubtitleTextStyle}" TextWrapping="Wrap" Text="No items found. Please try to refine your search term."></TextBlock>
+            </Grid>
+        </Grid>
+        
+        
+    </Grid>
+</Page>
